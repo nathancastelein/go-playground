@@ -16,7 +16,18 @@ before:
     - go generate ./...
 
 builds:
-  - main: ./cmd/api/
+  - id: api
+    binary: api
+    main: ./cmd/api/
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+  - id: cli
+    binary: cli
+    main: ./cmd/cli/
     env:
       - CGO_ENABLED=0
     goos:
